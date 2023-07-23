@@ -1,0 +1,33 @@
+{
+	"name": "scraper-web",
+	"version": "0.0.1",
+	"description": "",
+	"author": "NeguinDev",
+	"license": "ISC",
+	"main": "dist/index.js",
+	"scripts": {
+		"start": "npm run build && electron .",
+		"start:dev": "tsup src",
+		"build": "tsc"
+	},
+	"tsup": {
+		"clean": true,
+		"bundle": false,
+		"watch": [
+			"src",
+			"view"
+		],
+		"onSuccess": "npm start"
+	},
+	"dependencies": {
+		"crawlee": "^3.4.2",
+		"playwright": "^1.36.1"
+	},
+	"devDependencies": {
+		"@types/node": "^18.0.0",
+		"electron": "^25.3.1",
+		"tsup": "^7.1.0",
+		"tsx": "^3.12.7",
+		"typescript": "^5.0.0"
+	}
+}
