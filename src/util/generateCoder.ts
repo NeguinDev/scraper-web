@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import util from 'util';
 
 export class GenerateCode {
 	private count: number = 0;
@@ -54,7 +55,7 @@ function request(options) {
 
 		const code = `
 async function req${this.count++}() {
-	const data = ${JSON.stringify(options, null, '\t')};
+	const data = ${util.inspect(options, { depth: null })};
 	
 	const response = await request(data);
 	${isJson(bodyResponse) ? `/*\n\t${JSON.stringify(bodyResponse)}\n\t*/` : ''}
