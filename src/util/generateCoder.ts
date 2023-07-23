@@ -57,9 +57,7 @@ async function req${this.count++}() {
 	const data = ${JSON.stringify(options, null, '\t')};
 	
 	const response = await request(data);
-
 	${isJson(bodyResponse) ? `/*\n\t${JSON.stringify(bodyResponse)}\n\t*/` : ''}
-
 	return response.body;
 }
 `;
