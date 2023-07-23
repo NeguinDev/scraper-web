@@ -8,7 +8,8 @@
 	"scripts": {
 		"start": "npm run build && electron .",
 		"start:dev": "tsup src",
-		"build": "tsc"
+		"build": "tsc",
+		"electron": "electron ."
 	},
 	"tsup": {
 		"clean": true,
@@ -17,7 +18,7 @@
 			"src",
 			"view"
 		],
-		"onSuccess": "npm start"
+		"onSuccess": "npm run electron"
 	},
 	"dependencies": {
 		"crawlee": "^3.4.2",
