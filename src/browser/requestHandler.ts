@@ -39,7 +39,10 @@ export async function requestHandler(response: Response, generateCode?: Generate
 	const bodyResponse = await response
 		.body()
 		.catch(() => undefined)
-		.then((body) => body?.toString());
+		.then((body) => {
+			if (!body) return undefined;
+			return Buffer.from(body).toString();
+		});
 
 	if (generateCode) {
 		generateCode.appendCode({ url, method, headers, body, bodyResponse });

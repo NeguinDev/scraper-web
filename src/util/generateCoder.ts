@@ -53,12 +53,14 @@ function request(options) {
 
 		console.log(`${method}: ${url}`);
 
+		const bodyResponseString = isJson(bodyResponse) ? JSON.stringify(JSON.parse(bodyResponse!), null, '\t') : undefined;
+
 		const code = `
 async function req${this.count++}() {
 	const data = ${util.inspect(options, { depth: null })};
 	
 	const response = await request(data);
-	${isJson(bodyResponse) ? `/*\n\t${JSON.stringify(bodyResponse)}\n\t*/` : ''}
+	${bodyResponseString ? `/*\n${bodyResponseString}\n\t*/` : ''}
 	return response.body;
 }
 `;
